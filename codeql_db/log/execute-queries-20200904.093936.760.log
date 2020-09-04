@@ -1,0 +1,36 @@
+[2020-09-04 09:39:36] This is codeql execute queries -J-Xmx1024M --off-heap-ram=1024 --verbosity=progress --logdir=/Users/mtfly/Code/Java/test4codeql/codeql_db/log --threads=4 --ml-model-path=/Users/mtfly/Code/Java/test4codeql --native-library-path=/Users/mtfly/Code/Java/test4codeql --warnings=show --no-rerun --output=/Users/mtfly/Code/Java/test4codeql/codeql_db/results -- /Users/mtfly/Code/Java/test4codeql/codeql_db/db-java /Users/mtfly/Code/CodeQL/origin_ql/java/ql/src/Security/CWE/CWE-022/TaintedPath.ql
+[2020-09-04 09:39:36] Calling plumbing command: codeql resolve queries --format=json -- /Users/mtfly/Code/CodeQL/origin_ql/java/ql/src/Security/CWE/CWE-022/TaintedPath.ql
+[2020-09-04 09:39:36] Plumbing command codeql resolve queries completed:
+                      [
+                        "/Users/mtfly/Code/CodeQL/origin_ql/java/ql/src/Security/CWE/CWE-022/TaintedPath.ql"
+                      ]
+[2020-09-04 09:39:36] Creating executor with 4 threads.
+[2020-09-04 09:39:37] Exception caught at top level: Error initializing the IMB disk cache: the cache directory is already locked by another running process. Only one instance of the IMB can access a cache directory at a time. The lock file is located at /Users/mtfly/Code/Java/test4codeql/codeql_db/db-java/default/cache/.lock
+                      (eventual cause: OverlappingFileLockException)
+                      com.semmle.inmemory.caching.RelationCacheImpl.takeFilesystemLock(RelationCacheImpl.java:351)
+                      com.semmle.inmemory.caching.RelationCacheImpl.create(RelationCacheImpl.java:110)
+                      com.semmle.inmemory.caching.RelationManager.<init>(RelationManager.java:99)
+                      com.semmle.inmemory.MemoryBackend.<init>(MemoryBackend.java:153)
+                      com.semmle.cli2.ql.EvaluationCommon.<init>(EvaluationCommon.java:84)
+                      com.semmle.cli2.ql.EvaluationCommon.<init>(EvaluationCommon.java:63)
+                      com.semmle.cli2.execute.ExecuteQueriesCommand.executeSubcommand(ExecuteQueriesCommand.java:222)
+                      com.semmle.cli2.picocli.SubcommandCommon.call(SubcommandCommon.java:430)
+                      com.semmle.cli2.picocli.SubcommandMaker.runMain(SubcommandMaker.java:182)
+                      com.semmle.cli2.picocli.SubcommandMaker.runMain(SubcommandMaker.java:190)
+                      com.semmle.cli2.CodeQL.main(CodeQL.java:89)
+                      
+                       ... caused by:
+                      
+                      java.nio.channels.OverlappingFileLockException
+                      com.semmle.util.files.FileSystemLock.<init>(FileSystemLock.java:75)
+                      com.semmle.inmemory.caching.RelationCacheImpl.takeFilesystemLock(RelationCacheImpl.java:347)
+                      com.semmle.inmemory.caching.RelationCacheImpl.create(RelationCacheImpl.java:110)
+                      com.semmle.inmemory.caching.RelationManager.<init>(RelationManager.java:99)
+                      com.semmle.inmemory.MemoryBackend.<init>(MemoryBackend.java:153)
+                      com.semmle.cli2.ql.EvaluationCommon.<init>(EvaluationCommon.java:84)
+                      com.semmle.cli2.ql.EvaluationCommon.<init>(EvaluationCommon.java:63)
+                      com.semmle.cli2.execute.ExecuteQueriesCommand.executeSubcommand(ExecuteQueriesCommand.java:222)
+                      com.semmle.cli2.picocli.SubcommandCommon.call(SubcommandCommon.java:430)
+                      com.semmle.cli2.picocli.SubcommandMaker.runMain(SubcommandMaker.java:182)
+                      com.semmle.cli2.picocli.SubcommandMaker.runMain(SubcommandMaker.java:190)
+                      com.semmle.cli2.CodeQL.main(CodeQL.java:89)

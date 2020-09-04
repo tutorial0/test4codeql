@@ -1,0 +1,40 @@
+[2020-09-04 09:39:48] This is codeql database analyze --format=sarif-latest --output=./res.json --sarif-add-snippets --threads=4 ./codeql_db /Users/mtfly/Code/CodeQL/origin_ql/java/ql/src/Security/CWE/CWE-022/TaintedPath.ql
+[2020-09-04 09:39:48] Log file was started late.
+[2020-09-04 09:39:48] [PROGRESS] database analyze> Running queries.
+[2020-09-04 09:39:48] Running plumbing command: codeql database run-queries --threads=4 --ml-model-path= --native-library-path= --warnings=show --no-rerun -- /Users/mtfly/Code/Java/test4codeql/codeql_db /Users/mtfly/Code/CodeQL/origin_ql/java/ql/src/Security/CWE/CWE-022/TaintedPath.ql
+[2020-09-04 09:39:48] Calling plumbing command: codeql resolve ram --format=json
+[2020-09-04 09:39:48] Plumbing command codeql resolve ram completed:
+                      [
+                        "-J-Xmx1024M",
+                        "--off-heap-ram=1024"
+                      ]
+[2020-09-04 09:39:48] Spawning plumbing command: execute queries -J-Xmx1024M --off-heap-ram=1024 --verbosity=progress --logdir=/Users/mtfly/Code/Java/test4codeql/codeql_db/log --threads=4 --ml-model-path=/Users/mtfly/Code/Java/test4codeql --native-library-path=/Users/mtfly/Code/Java/test4codeql --warnings=show --no-rerun --output=/Users/mtfly/Code/Java/test4codeql/codeql_db/results -- /Users/mtfly/Code/Java/test4codeql/codeql_db/db-java /Users/mtfly/Code/CodeQL/origin_ql/java/ql/src/Security/CWE/CWE-022/TaintedPath.ql
+[2020-09-04 09:40:54] Plumbing command codeql execute queries terminated with status 0.
+[2020-09-04 09:40:54] Plumbing command codeql database run-queries completed with status 0.
+[2020-09-04 09:40:54] [PROGRESS] database analyze> Interpreting results.
+[2020-09-04 09:40:54] Running plumbing command: codeql database interpret-results --format=sarif-latest -o=/Users/mtfly/Code/Java/test4codeql/res.json --max-paths=4 --sarif-add-snippets --csv-location-format=line-column --threads=4 -- /Users/mtfly/Code/Java/test4codeql/codeql_db /Users/mtfly/Code/CodeQL/origin_ql/java/ql/src/Security/CWE/CWE-022/TaintedPath.ql
+[2020-09-04 09:40:54] Calling plumbing command: codeql resolve queries --format=json -- /Users/mtfly/Code/CodeQL/origin_ql/java/ql/src/Security/CWE/CWE-022/TaintedPath.ql
+[2020-09-04 09:40:54] Plumbing command codeql resolve queries completed:
+                      [
+                        "/Users/mtfly/Code/CodeQL/origin_ql/java/ql/src/Security/CWE/CWE-022/TaintedPath.ql"
+                      ]
+[2020-09-04 09:40:54] Calling plumbing command: codeql resolve library-path --query=/Users/mtfly/Code/CodeQL/origin_ql/java/ql/src/Security/CWE/CWE-022/TaintedPath.ql --full-library-path=none --dbscheme=none --format=json
+[2020-09-04 09:40:54] [DETAILS] resolve library-path> Resolving query at normalized path /Users/mtfly/Code/CodeQL/origin_ql/java/ql/src/Security/CWE/CWE-022/TaintedPath.ql.
+[2020-09-04 09:40:54] [DETAILS] resolve library-path> Found enclosing pack 'codeql-java' at /Users/mtfly/Code/CodeQL/origin_ql/java/ql/src.
+[2020-09-04 09:40:54] [DETAILS] resolve library-path> Adding compilation cache at /Users/mtfly/Code/CodeQL/origin_ql/java/ql/src/.cache.
+[2020-09-04 09:40:54] [DETAILS] resolve library-path> Dbscheme was explicitly overridden as /Users/mtfly/Code/Java/test4codeql/none
+[2020-09-04 09:40:54] [DETAILS] resolve library-path> Library path was overridden on command line.
+[2020-09-04 09:40:54] Plumbing command codeql resolve library-path completed:
+                      {
+                        "libraryPath" : [
+                          "/Users/mtfly/Code/Java/test4codeql/none"
+                        ],
+                        "dbscheme" : "/Users/mtfly/Code/Java/test4codeql/none",
+                        "compilationCache" : [
+                          "/Users/mtfly/Code/CodeQL/origin_ql/java/ql/src/.cache"
+                        ],
+                        "qlPackName" : "codeql-java",
+                        "relativeName" : "codeql-java/Security/CWE/CWE-022/TaintedPath.ql"
+                      }
+[2020-09-04 09:40:54] Plumbing command codeql database interpret-results completed.
+[2020-09-04 09:40:54] Terminating normally.

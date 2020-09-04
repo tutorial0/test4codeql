@@ -1,0 +1,61 @@
+[T 09:35:17 2174] Reading configuration file /Users/mtfly/Code/Java/test4codeql/codeql_db/working/tracing/compiler-tracing8741993480770536938.spec...
+[T 09:35:17 2174] Recognising file, first four bytes: { cf, fa, ed, fe }
+[T 09:35:17 2174]   Mach-O 64-bit
+[T 09:35:17 2174] Reading configuration file /Users/mtfly/Code/Java/test4codeql/codeql_db/working/tracing/compiler-tracing8741993480770536938.spec...
+[T 09:35:17 2174] Warning: SEMMLE_EXEC and SEMMLE_EXECP not set. Falling back to path lookup on argv[0].
+[T 09:35:17 2174] ==== Candidate to intercept: /Users/mtfly/Code/CodeQL/codeql/tools/osx64/runner-osx (canonical: /Users/mtfly/Code/CodeQL/codeql/tools/osx64/runner-osx) ====
+[T 09:35:17 2174] Recognising file, first four bytes: { 23, 21, 2f, 62 }
+[T 09:35:17 2174]   #!.
+[T 09:35:17 2174] Recognising file, first four bytes: { cf, fa, ed, fe }
+[T 09:35:17 2174]   Mach-O 64-bit
+[T 09:35:20 2174] Reading configuration file /Users/mtfly/Code/Java/test4codeql/codeql_db/working/tracing/compiler-tracing8741993480770536938.spec...
+[T 09:35:20 2174] ==== Candidate to intercept: /Users/mtfly/Code/CodeQL/codeql/java/tools/autobuild.sh (canonical: /Users/mtfly/Code/CodeQL/codeql/java/tools/autobuild.sh) ====
+[T 09:35:20 2174] Recognising file, first four bytes: { cf, fa, ed, fe }
+[T 09:35:20 2174]   Mach-O 64-bit
+[T 09:35:20 2174] Reading configuration file /Users/mtfly/Code/Java/test4codeql/codeql_db/working/tracing/compiler-tracing8741993480770536938.spec...
+[T 09:35:20 2174] ==== Candidate to intercept: /bin/bash (canonical: /bin/bash) ====
+[T 09:35:20 2186] Recognising file, first four bytes: { cf, fa, ed, fe }
+[T 09:35:20 2186]   Mach-O 64-bit
+[T 09:35:23 2186] Reading configuration file /Users/mtfly/Code/Java/test4codeql/codeql_db/working/tracing/compiler-tracing8741993480770536938.spec...
+[T 09:35:23 2186] ==== Candidate to intercept: /Users/mtfly/Code/CodeQL/codeql/tools/osx64/java/bin/java (canonical: /Users/mtfly/Code/CodeQL/codeql/tools/osx64/java/bin/java) ====
+[T 09:35:23 2186] Passing through -javaagent:/Users/mtfly/Code/CodeQL/codeql/java/tools/codeql-java-agent.jar=ignore-project,java to underlying JVM.
+[T 09:35:23 2186] Passing through -Xbootclasspath/a:/Users/mtfly/Code/CodeQL/codeql/java/tools/codeql-java-agent.jar to underlying JVM.
+[T 09:35:23 2186] Intercepted JVM creation with extra hidden args: ['-javaagent:/Users/mtfly/Code/CodeQL/codeql/java/tools/codeql-java-agent.jar=ignore-project,java' '-Xbootclasspath/a:/Users/mtfly/Code/CodeQL/codeql/java/tools/codeql-java-agent.jar'] (result: 1, 0).
+[T 09:35:23 2186] Recognising file, first four bytes: { cf, fa, ed, fe }
+[T 09:35:23 2186]   Mach-O 64-bit
+[T 09:35:23 2203] Reading configuration file /Users/mtfly/Code/Java/test4codeql/codeql_db/working/tracing/compiler-tracing8741993480770536938.spec...
+[T 09:35:23 2203] ==== Candidate to intercept: /Users/mtfly/Code/CodeQL/codeql/tools/osx64/java/lib/jspawnhelper (canonical: /Users/mtfly/Code/CodeQL/codeql/tools/osx64/java/lib/jspawnhelper) ====
+[T 09:35:23 2203] Reading configuration file /Users/mtfly/Code/Java/test4codeql/codeql_db/working/tracing/compiler-tracing8741993480770536938.spec...
+[T 09:35:23 2203] ==== Candidate to intercept: /usr/local/opt/apache-maven-3.6.3/bin/mvn (canonical: /usr/local/opt/apache-maven-3.6.3/bin/mvn) ====
+[T 09:35:23 2203] Recognising file, first four bytes: { cf, fa, ed, fe }
+[T 09:35:23 2203]   Mach-O 64-bit
+[T 09:35:23 2203] Reading configuration file /Users/mtfly/Code/Java/test4codeql/codeql_db/working/tracing/compiler-tracing8741993480770536938.spec...
+[T 09:35:23 2203] ==== Candidate to intercept: /bin/bash (canonical: /bin/bash) ====
+[T 09:35:23 2204] Recognising file, first four bytes: { cf, fa, ed, fe }
+[T 09:35:23 2204]   Mach-O 64-bit
+[T 09:35:24 2204] Reading configuration file /Users/mtfly/Code/Java/test4codeql/codeql_db/working/tracing/compiler-tracing8741993480770536938.spec...
+[T 09:35:24 2204] ==== Candidate to intercept: /usr/bin/uname (canonical: /usr/bin/uname) ====
+[T 09:35:24 2210] Recognising file, first four bytes: { cf, fa, ed, fe }
+[T 09:35:24 2210]   Mach-O 64-bit
+[T 09:35:24 2210] Reading configuration file /Users/mtfly/Code/Java/test4codeql/codeql_db/working/tracing/compiler-tracing8741993480770536938.spec...
+[T 09:35:24 2210] ==== Candidate to intercept: /usr/bin/dirname (canonical: /usr/bin/dirname) ====
+[T 09:35:24 2223] Recognising file, first four bytes: { cf, fa, ed, fe }
+[T 09:35:24 2223]   Mach-O 64-bit
+[T 09:35:24 2223] Reading configuration file /Users/mtfly/Code/Java/test4codeql/codeql_db/working/tracing/compiler-tracing8741993480770536938.spec...
+[T 09:35:24 2223] ==== Candidate to intercept: /usr/bin/dirname (canonical: /usr/bin/dirname) ====
+[T 09:35:24 2203] Recognising file, first four bytes: { cf, fa, ed, fe }
+[T 09:35:24 2203]   Mach-O 64-bit
+[T 09:35:25 2203] Reading configuration file /Users/mtfly/Code/Java/test4codeql/codeql_db/working/tracing/compiler-tracing8741993480770536938.spec...
+[T 09:35:25 2203] ==== Candidate to intercept: /Library/Java/JavaVirtualMachines/jdk1.8.0_251.jdk/Contents/Home//bin/java (canonical: /Library/Java/JavaVirtualMachines/jdk1.8.0_251.jdk/Contents/Home/bin/java) ====
+[T 09:35:25 2203] Passing through -javaagent:/Users/mtfly/Code/CodeQL/codeql/java/tools/codeql-java-agent.jar=ignore-project,java to underlying JVM.
+[T 09:35:25 2203] Passing through -Xbootclasspath/a:/Users/mtfly/Code/CodeQL/codeql/java/tools/codeql-java-agent.jar to underlying JVM.
+[T 09:35:25 2203] Intercepted JVM creation with extra hidden args: ['-javaagent:/Users/mtfly/Code/CodeQL/codeql/java/tools/codeql-java-agent.jar=ignore-project,java' '-Xbootclasspath/a:/Users/mtfly/Code/CodeQL/codeql/java/tools/codeql-java-agent.jar'] (result: 1, 0).
+[T 09:35:29 2203] Recognising file, first four bytes: { cf, fa, ed, fe }
+[T 09:35:29 2203]   Mach-O 64-bit
+[T 09:35:29 2248] Reading configuration file /Users/mtfly/Code/Java/test4codeql/codeql_db/working/tracing/compiler-tracing8741993480770536938.spec...
+[T 09:35:29 2248] ==== Candidate to intercept: /Library/Java/JavaVirtualMachines/jdk1.8.0_251.jdk/Contents/Home/jre/lib/jspawnhelper (canonical: /Library/Java/JavaVirtualMachines/jdk1.8.0_251.jdk/Contents/Home/jre/lib/jspawnhelper) ====
+[T 09:35:30 2248] Reading configuration file /Users/mtfly/Code/Java/test4codeql/codeql_db/working/tracing/compiler-tracing8741993480770536938.spec...
+[T 09:35:30 2248] ==== Candidate to intercept: /Users/mtfly/Code/CodeQL/codeql/java/tools/macos/jdk-extractor-java/bin/java (canonical: /Users/mtfly/Code/CodeQL/codeql/java/tools/macos/jdk-extractor-java/bin/java) ====
+[T 09:35:30 2248] Passing through -javaagent:/Users/mtfly/Code/CodeQL/codeql/java/tools/codeql-java-agent.jar=ignore-project,java to underlying JVM.
+[T 09:35:30 2248] Passing through -Xbootclasspath/a:/Users/mtfly/Code/CodeQL/codeql/java/tools/codeql-java-agent.jar to underlying JVM.
+[T 09:35:30 2248] Intercepted JVM creation with extra hidden args: ['-javaagent:/Users/mtfly/Code/CodeQL/codeql/java/tools/codeql-java-agent.jar=ignore-project,java' '-Xbootclasspath/a:/Users/mtfly/Code/CodeQL/codeql/java/tools/codeql-java-agent.jar'] (result: 1, 0).

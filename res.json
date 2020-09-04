@@ -1,0 +1,1298 @@
+{
+  "$schema" : "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version" : "2.1.0",
+  "runs" : [ {
+    "tool" : {
+      "driver" : {
+        "name" : "CodeQL",
+        "organization" : "GitHub",
+        "semanticVersion" : "2.2.5",
+        "rules" : [ {
+          "id" : "java/path-injection",
+          "name" : "java/path-injection",
+          "shortDescription" : {
+            "text" : "Uncontrolled data used in path expression"
+          },
+          "fullDescription" : {
+            "text" : "Accessing paths influenced by users can allow an attacker to access unexpected resources."
+          },
+          "defaultConfiguration" : {
+            "level" : "error"
+          },
+          "properties" : {
+            "tags" : [ "security", "external/cwe/cwe-022", "external/cwe/cwe-023", "external/cwe/cwe-036", "external/cwe/cwe-073" ],
+            "kind" : "path-problem",
+            "precision" : "high",
+            "name" : "Uncontrolled data used in path expression",
+            "description" : "Accessing paths influenced by users can allow an attacker to access unexpected resources.",
+            "id" : "java/path-injection",
+            "problem.severity" : "error"
+          }
+        } ]
+      }
+    },
+    "artifacts" : [ {
+      "location" : {
+        "uri" : "src/main/java/org/joychou/controller/FileUpload.java",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 0
+      }
+    }, {
+      "location" : {
+        "uri" : "src/main/java/org/joychou/controller/PathTraversal.java",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 1
+      }
+    }, {
+      "location" : {
+        "uri" : "src/main/java/org/joychou/util/WebUtils.java",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 2
+      }
+    }, {
+      "location" : {
+        "uri" : "src/main/java/org/joychou/controller/SSRF.java",
+        "uriBaseId" : "%SRCROOT%",
+        "index" : 3
+      }
+    } ],
+    "results" : [ {
+      "ruleId" : "java/path-injection",
+      "ruleIndex" : 0,
+      "message" : {
+        "text" : "[User-provided value](1) flows to here and is used in a path."
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "src/main/java/org/joychou/controller/FileUpload.java",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 0
+          },
+          "region" : {
+            "startLine" : 59,
+            "startColumn" : 25,
+            "endColumn" : 80
+          },
+          "contextRegion" : {
+            "startLine" : 57,
+            "endLine" : 61,
+            "snippet" : {
+              "text" : "            // Get the file and save it somewhere\n            byte[] bytes = file.getBytes();\n            Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());\n            Files.write(path, bytes);\n\n"
+            }
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "c686e6aefb30785b:1",
+        "primaryLocationStartColumnFingerprint" : "12"
+      },
+      "codeFlows" : [ {
+        "threadFlows" : [ {
+          "locations" : [ {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/main/java/org/joychou/controller/FileUpload.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 0
+                },
+                "region" : {
+                  "startLine" : 59,
+                  "startColumn" : 53,
+                  "endColumn" : 79
+                },
+                "contextRegion" : {
+                  "startLine" : 57,
+                  "endLine" : 61,
+                  "snippet" : {
+                    "text" : "            // Get the file and save it somewhere\n            byte[] bytes = file.getBytes();\n            Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());\n            Files.write(path, bytes);\n\n"
+                  }
+                }
+              },
+              "message" : {
+                "text" : "getOriginalFilename(...) : String"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/main/java/org/joychou/controller/FileUpload.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 0
+                },
+                "region" : {
+                  "startLine" : 59,
+                  "startColumn" : 35,
+                  "endColumn" : 79
+                },
+                "contextRegion" : {
+                  "startLine" : 57,
+                  "endLine" : 61,
+                  "snippet" : {
+                    "text" : "            // Get the file and save it somewhere\n            byte[] bytes = file.getBytes();\n            Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());\n            Files.write(path, bytes);\n\n"
+                  }
+                }
+              },
+              "message" : {
+                "text" : "... + ..."
+              }
+            }
+          } ]
+        } ]
+      } ],
+      "relatedLocations" : [ {
+        "id" : 1,
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "src/main/java/org/joychou/controller/FileUpload.java",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 0
+          },
+          "region" : {
+            "startLine" : 59,
+            "startColumn" : 53,
+            "endColumn" : 79
+          },
+          "contextRegion" : {
+            "startLine" : 57,
+            "endLine" : 61,
+            "snippet" : {
+              "text" : "            // Get the file and save it somewhere\n            byte[] bytes = file.getBytes();\n            Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());\n            Files.write(path, bytes);\n\n"
+            }
+          }
+        },
+        "message" : {
+          "text" : "User-provided value"
+        }
+      } ]
+    }, {
+      "ruleId" : "java/path-injection",
+      "ruleIndex" : 0,
+      "message" : {
+        "text" : "[User-provided value](1) flows to here and is used in a path."
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "src/main/java/org/joychou/controller/FileUpload.java",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 0
+          },
+          "region" : {
+            "startLine" : 136,
+            "startColumn" : 25,
+            "endColumn" : 85
+          },
+          "contextRegion" : {
+            "startLine" : 134,
+            "endLine" : 138,
+            "snippet" : {
+              "text" : "            // Get the file and save it somewhere\n            byte[] bytes = multifile.getBytes();\n            Path path = Paths.get(UPLOADED_FOLDER + multifile.getOriginalFilename());\n            Files.write(path, bytes);\n        } catch (IOException e) {\n"
+            }
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "d509d7b1cfc861c9:1",
+        "primaryLocationStartColumnFingerprint" : "12"
+      },
+      "codeFlows" : [ {
+        "threadFlows" : [ {
+          "locations" : [ {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/main/java/org/joychou/controller/FileUpload.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 0
+                },
+                "region" : {
+                  "startLine" : 136,
+                  "startColumn" : 53,
+                  "endColumn" : 84
+                },
+                "contextRegion" : {
+                  "startLine" : 134,
+                  "endLine" : 138,
+                  "snippet" : {
+                    "text" : "            // Get the file and save it somewhere\n            byte[] bytes = multifile.getBytes();\n            Path path = Paths.get(UPLOADED_FOLDER + multifile.getOriginalFilename());\n            Files.write(path, bytes);\n        } catch (IOException e) {\n"
+                  }
+                }
+              },
+              "message" : {
+                "text" : "getOriginalFilename(...) : String"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/main/java/org/joychou/controller/FileUpload.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 0
+                },
+                "region" : {
+                  "startLine" : 136,
+                  "startColumn" : 35,
+                  "endColumn" : 84
+                },
+                "contextRegion" : {
+                  "startLine" : 134,
+                  "endLine" : 138,
+                  "snippet" : {
+                    "text" : "            // Get the file and save it somewhere\n            byte[] bytes = multifile.getBytes();\n            Path path = Paths.get(UPLOADED_FOLDER + multifile.getOriginalFilename());\n            Files.write(path, bytes);\n        } catch (IOException e) {\n"
+                  }
+                }
+              },
+              "message" : {
+                "text" : "... + ..."
+              }
+            }
+          } ]
+        } ]
+      } ],
+      "relatedLocations" : [ {
+        "id" : 1,
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "src/main/java/org/joychou/controller/FileUpload.java",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 0
+          },
+          "region" : {
+            "startLine" : 136,
+            "startColumn" : 53,
+            "endColumn" : 84
+          },
+          "contextRegion" : {
+            "startLine" : 134,
+            "endLine" : 138,
+            "snippet" : {
+              "text" : "            // Get the file and save it somewhere\n            byte[] bytes = multifile.getBytes();\n            Path path = Paths.get(UPLOADED_FOLDER + multifile.getOriginalFilename());\n            Files.write(path, bytes);\n        } catch (IOException e) {\n"
+            }
+          }
+        },
+        "message" : {
+          "text" : "User-provided value"
+        }
+      } ]
+    }, {
+      "ruleId" : "java/path-injection",
+      "ruleIndex" : 0,
+      "message" : {
+        "text" : "[User-provided value](1) flows to here and is used in a path."
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "src/main/java/org/joychou/controller/FileUpload.java",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 0
+          },
+          "region" : {
+            "startLine" : 170,
+            "startColumn" : 25,
+            "endColumn" : 66
+          },
+          "contextRegion" : {
+            "startLine" : 168,
+            "endLine" : 172,
+            "snippet" : {
+              "text" : "        UUID uuid = Generators.timeBasedGenerator().generate();\n\n        File convFile = new File(UPLOADED_FOLDER + uuid + suffix);\n        boolean ret = convFile.createNewFile();\n        if (!ret) {\n"
+            }
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "a9cd3fc3cffa1ba2:1",
+        "primaryLocationStartColumnFingerprint" : "16"
+      },
+      "codeFlows" : [ {
+        "threadFlows" : [ {
+          "locations" : [ {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/main/java/org/joychou/controller/FileUpload.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 0
+                },
+                "region" : {
+                  "startLine" : 166,
+                  "startColumn" : 27,
+                  "endColumn" : 58
+                },
+                "contextRegion" : {
+                  "startLine" : 164,
+                  "endLine" : 168,
+                  "snippet" : {
+                    "text" : "     */\n    private File convert(MultipartFile multiFile) throws Exception {\n        String fileName = multiFile.getOriginalFilename();\n        String suffix = fileName.substring(fileName.lastIndexOf(\".\"));\n        UUID uuid = Generators.timeBasedGenerator().generate();\n"
+                  }
+                }
+              },
+              "message" : {
+                "text" : "getOriginalFilename(...) : String"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/main/java/org/joychou/controller/FileUpload.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 0
+                },
+                "region" : {
+                  "startLine" : 170,
+                  "startColumn" : 34,
+                  "endColumn" : 65
+                },
+                "contextRegion" : {
+                  "startLine" : 168,
+                  "endLine" : 172,
+                  "snippet" : {
+                    "text" : "        UUID uuid = Generators.timeBasedGenerator().generate();\n\n        File convFile = new File(UPLOADED_FOLDER + uuid + suffix);\n        boolean ret = convFile.createNewFile();\n        if (!ret) {\n"
+                  }
+                }
+              },
+              "message" : {
+                "text" : "... + ..."
+              }
+            }
+          } ]
+        } ]
+      } ],
+      "relatedLocations" : [ {
+        "id" : 1,
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "src/main/java/org/joychou/controller/FileUpload.java",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 0
+          },
+          "region" : {
+            "startLine" : 166,
+            "startColumn" : 27,
+            "endColumn" : 58
+          },
+          "contextRegion" : {
+            "startLine" : 164,
+            "endLine" : 168,
+            "snippet" : {
+              "text" : "     */\n    private File convert(MultipartFile multiFile) throws Exception {\n        String fileName = multiFile.getOriginalFilename();\n        String suffix = fileName.substring(fileName.lastIndexOf(\".\"));\n        UUID uuid = Generators.timeBasedGenerator().generate();\n"
+            }
+          }
+        },
+        "message" : {
+          "text" : "User-provided value"
+        }
+      } ]
+    }, {
+      "ruleId" : "java/path-injection",
+      "ruleIndex" : 0,
+      "message" : {
+        "text" : "[User-provided value](1) flows to here and is used in a path.\n[User-provided value](2) flows to here and is used in a path."
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "src/main/java/org/joychou/controller/PathTraversal.java",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 1
+          },
+          "region" : {
+            "startLine" : 43,
+            "startColumn" : 18,
+            "endColumn" : 35
+          },
+          "contextRegion" : {
+            "startLine" : 41,
+            "endLine" : 45,
+            "snippet" : {
+              "text" : "        logger.info(\"File path: \" + imgFile);\n\n        File f = new File(imgFile);\n        if (f.exists() && !f.isDirectory()) {\n            byte[] data = Files.readAllBytes(Paths.get(imgFile));\n"
+            }
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "bc7779bd6242f045:1",
+        "primaryLocationStartColumnFingerprint" : "9"
+      },
+      "codeFlows" : [ {
+        "threadFlows" : [ {
+          "locations" : [ {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/main/java/org/joychou/controller/PathTraversal.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 1
+                },
+                "region" : {
+                  "startLine" : 25,
+                  "startColumn" : 28,
+                  "endColumn" : 43
+                },
+                "contextRegion" : {
+                  "startLine" : 23,
+                  "endLine" : 27,
+                  "snippet" : {
+                    "text" : "     */\n    @GetMapping(\"/path_traversal/vul\")\n    public String getImage(String filepath) throws IOException {\n        return getImgBase64(filepath);\n    }\n"
+                  }
+                }
+              },
+              "message" : {
+                "text" : "filepath : String"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/main/java/org/joychou/controller/PathTraversal.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 1
+                },
+                "region" : {
+                  "startLine" : 26,
+                  "startColumn" : 29,
+                  "endColumn" : 37
+                },
+                "contextRegion" : {
+                  "startLine" : 24,
+                  "endLine" : 28,
+                  "snippet" : {
+                    "text" : "    @GetMapping(\"/path_traversal/vul\")\n    public String getImage(String filepath) throws IOException {\n        return getImgBase64(filepath);\n    }\n\n"
+                  }
+                }
+              },
+              "message" : {
+                "text" : "filepath : String"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/main/java/org/joychou/controller/PathTraversal.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 1
+                },
+                "region" : {
+                  "startLine" : 38,
+                  "startColumn" : 33,
+                  "endColumn" : 47
+                },
+                "contextRegion" : {
+                  "startLine" : 36,
+                  "endLine" : 40,
+                  "snippet" : {
+                    "text" : "    }\n\n    private String getImgBase64(String imgFile) throws IOException {\n\n        logger.info(\"Working directory: \" + System.getProperty(\"user.dir\"));\n"
+                  }
+                }
+              },
+              "message" : {
+                "text" : "imgFile : String"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/main/java/org/joychou/controller/PathTraversal.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 1
+                },
+                "region" : {
+                  "startLine" : 43,
+                  "startColumn" : 27,
+                  "endColumn" : 34
+                },
+                "contextRegion" : {
+                  "startLine" : 41,
+                  "endLine" : 45,
+                  "snippet" : {
+                    "text" : "        logger.info(\"File path: \" + imgFile);\n\n        File f = new File(imgFile);\n        if (f.exists() && !f.isDirectory()) {\n            byte[] data = Files.readAllBytes(Paths.get(imgFile));\n"
+                  }
+                }
+              },
+              "message" : {
+                "text" : "imgFile"
+              }
+            }
+          } ]
+        } ]
+      }, {
+        "threadFlows" : [ {
+          "locations" : [ {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/main/java/org/joychou/controller/PathTraversal.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 1
+                },
+                "region" : {
+                  "startLine" : 30,
+                  "startColumn" : 31,
+                  "endColumn" : 46
+                },
+                "contextRegion" : {
+                  "startLine" : 28,
+                  "endLine" : 32,
+                  "snippet" : {
+                    "text" : "\n    @GetMapping(\"/path_traversal/sec\")\n    public String getImageSec(String filepath) throws IOException {\n        if (SecurityUtil.pathFilter(filepath) == null) {\n            logger.info(\"Illegal file path: \" + filepath);\n"
+                  }
+                }
+              },
+              "message" : {
+                "text" : "filepath : String"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/main/java/org/joychou/controller/PathTraversal.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 1
+                },
+                "region" : {
+                  "startLine" : 35,
+                  "startColumn" : 29,
+                  "endColumn" : 37
+                },
+                "contextRegion" : {
+                  "startLine" : 33,
+                  "endLine" : 37,
+                  "snippet" : {
+                    "text" : "            return \"Bad boy. Illegal file path.\";\n        }\n        return getImgBase64(filepath);\n    }\n\n"
+                  }
+                }
+              },
+              "message" : {
+                "text" : "filepath : String"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/main/java/org/joychou/controller/PathTraversal.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 1
+                },
+                "region" : {
+                  "startLine" : 38,
+                  "startColumn" : 33,
+                  "endColumn" : 47
+                },
+                "contextRegion" : {
+                  "startLine" : 36,
+                  "endLine" : 40,
+                  "snippet" : {
+                    "text" : "    }\n\n    private String getImgBase64(String imgFile) throws IOException {\n\n        logger.info(\"Working directory: \" + System.getProperty(\"user.dir\"));\n"
+                  }
+                }
+              },
+              "message" : {
+                "text" : "imgFile : String"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/main/java/org/joychou/controller/PathTraversal.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 1
+                },
+                "region" : {
+                  "startLine" : 43,
+                  "startColumn" : 27,
+                  "endColumn" : 34
+                },
+                "contextRegion" : {
+                  "startLine" : 41,
+                  "endLine" : 45,
+                  "snippet" : {
+                    "text" : "        logger.info(\"File path: \" + imgFile);\n\n        File f = new File(imgFile);\n        if (f.exists() && !f.isDirectory()) {\n            byte[] data = Files.readAllBytes(Paths.get(imgFile));\n"
+                  }
+                }
+              },
+              "message" : {
+                "text" : "imgFile"
+              }
+            }
+          } ]
+        } ]
+      } ],
+      "relatedLocations" : [ {
+        "id" : 1,
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "src/main/java/org/joychou/controller/PathTraversal.java",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 1
+          },
+          "region" : {
+            "startLine" : 25,
+            "startColumn" : 28,
+            "endColumn" : 43
+          },
+          "contextRegion" : {
+            "startLine" : 23,
+            "endLine" : 27,
+            "snippet" : {
+              "text" : "     */\n    @GetMapping(\"/path_traversal/vul\")\n    public String getImage(String filepath) throws IOException {\n        return getImgBase64(filepath);\n    }\n"
+            }
+          }
+        },
+        "message" : {
+          "text" : "User-provided value"
+        }
+      }, {
+        "id" : 2,
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "src/main/java/org/joychou/controller/PathTraversal.java",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 1
+          },
+          "region" : {
+            "startLine" : 30,
+            "startColumn" : 31,
+            "endColumn" : 46
+          },
+          "contextRegion" : {
+            "startLine" : 28,
+            "endLine" : 32,
+            "snippet" : {
+              "text" : "\n    @GetMapping(\"/path_traversal/sec\")\n    public String getImageSec(String filepath) throws IOException {\n        if (SecurityUtil.pathFilter(filepath) == null) {\n            logger.info(\"Illegal file path: \" + filepath);\n"
+            }
+          }
+        },
+        "message" : {
+          "text" : "User-provided value"
+        }
+      } ]
+    }, {
+      "ruleId" : "java/path-injection",
+      "ruleIndex" : 0,
+      "message" : {
+        "text" : "[User-provided value](1) flows to here and is used in a path.\n[User-provided value](2) flows to here and is used in a path."
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "src/main/java/org/joychou/controller/PathTraversal.java",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 1
+          },
+          "region" : {
+            "startLine" : 45,
+            "startColumn" : 46,
+            "endColumn" : 64
+          },
+          "contextRegion" : {
+            "startLine" : 43,
+            "endLine" : 47,
+            "snippet" : {
+              "text" : "        File f = new File(imgFile);\n        if (f.exists() && !f.isDirectory()) {\n            byte[] data = Files.readAllBytes(Paths.get(imgFile));\n            return new String(Base64.encodeBase64(data));\n        } else {\n"
+            }
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "6817c9bbb81b62fc:1",
+        "primaryLocationStartColumnFingerprint" : "33"
+      },
+      "codeFlows" : [ {
+        "threadFlows" : [ {
+          "locations" : [ {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/main/java/org/joychou/controller/PathTraversal.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 1
+                },
+                "region" : {
+                  "startLine" : 25,
+                  "startColumn" : 28,
+                  "endColumn" : 43
+                },
+                "contextRegion" : {
+                  "startLine" : 23,
+                  "endLine" : 27,
+                  "snippet" : {
+                    "text" : "     */\n    @GetMapping(\"/path_traversal/vul\")\n    public String getImage(String filepath) throws IOException {\n        return getImgBase64(filepath);\n    }\n"
+                  }
+                }
+              },
+              "message" : {
+                "text" : "filepath : String"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/main/java/org/joychou/controller/PathTraversal.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 1
+                },
+                "region" : {
+                  "startLine" : 26,
+                  "startColumn" : 29,
+                  "endColumn" : 37
+                },
+                "contextRegion" : {
+                  "startLine" : 24,
+                  "endLine" : 28,
+                  "snippet" : {
+                    "text" : "    @GetMapping(\"/path_traversal/vul\")\n    public String getImage(String filepath) throws IOException {\n        return getImgBase64(filepath);\n    }\n\n"
+                  }
+                }
+              },
+              "message" : {
+                "text" : "filepath : String"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/main/java/org/joychou/controller/PathTraversal.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 1
+                },
+                "region" : {
+                  "startLine" : 38,
+                  "startColumn" : 33,
+                  "endColumn" : 47
+                },
+                "contextRegion" : {
+                  "startLine" : 36,
+                  "endLine" : 40,
+                  "snippet" : {
+                    "text" : "    }\n\n    private String getImgBase64(String imgFile) throws IOException {\n\n        logger.info(\"Working directory: \" + System.getProperty(\"user.dir\"));\n"
+                  }
+                }
+              },
+              "message" : {
+                "text" : "imgFile : String"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/main/java/org/joychou/controller/PathTraversal.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 1
+                },
+                "region" : {
+                  "startLine" : 45,
+                  "startColumn" : 56,
+                  "endColumn" : 63
+                },
+                "contextRegion" : {
+                  "startLine" : 43,
+                  "endLine" : 47,
+                  "snippet" : {
+                    "text" : "        File f = new File(imgFile);\n        if (f.exists() && !f.isDirectory()) {\n            byte[] data = Files.readAllBytes(Paths.get(imgFile));\n            return new String(Base64.encodeBase64(data));\n        } else {\n"
+                  }
+                }
+              },
+              "message" : {
+                "text" : "imgFile"
+              }
+            }
+          } ]
+        } ]
+      }, {
+        "threadFlows" : [ {
+          "locations" : [ {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/main/java/org/joychou/controller/PathTraversal.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 1
+                },
+                "region" : {
+                  "startLine" : 30,
+                  "startColumn" : 31,
+                  "endColumn" : 46
+                },
+                "contextRegion" : {
+                  "startLine" : 28,
+                  "endLine" : 32,
+                  "snippet" : {
+                    "text" : "\n    @GetMapping(\"/path_traversal/sec\")\n    public String getImageSec(String filepath) throws IOException {\n        if (SecurityUtil.pathFilter(filepath) == null) {\n            logger.info(\"Illegal file path: \" + filepath);\n"
+                  }
+                }
+              },
+              "message" : {
+                "text" : "filepath : String"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/main/java/org/joychou/controller/PathTraversal.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 1
+                },
+                "region" : {
+                  "startLine" : 35,
+                  "startColumn" : 29,
+                  "endColumn" : 37
+                },
+                "contextRegion" : {
+                  "startLine" : 33,
+                  "endLine" : 37,
+                  "snippet" : {
+                    "text" : "            return \"Bad boy. Illegal file path.\";\n        }\n        return getImgBase64(filepath);\n    }\n\n"
+                  }
+                }
+              },
+              "message" : {
+                "text" : "filepath : String"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/main/java/org/joychou/controller/PathTraversal.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 1
+                },
+                "region" : {
+                  "startLine" : 38,
+                  "startColumn" : 33,
+                  "endColumn" : 47
+                },
+                "contextRegion" : {
+                  "startLine" : 36,
+                  "endLine" : 40,
+                  "snippet" : {
+                    "text" : "    }\n\n    private String getImgBase64(String imgFile) throws IOException {\n\n        logger.info(\"Working directory: \" + System.getProperty(\"user.dir\"));\n"
+                  }
+                }
+              },
+              "message" : {
+                "text" : "imgFile : String"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/main/java/org/joychou/controller/PathTraversal.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 1
+                },
+                "region" : {
+                  "startLine" : 45,
+                  "startColumn" : 56,
+                  "endColumn" : 63
+                },
+                "contextRegion" : {
+                  "startLine" : 43,
+                  "endLine" : 47,
+                  "snippet" : {
+                    "text" : "        File f = new File(imgFile);\n        if (f.exists() && !f.isDirectory()) {\n            byte[] data = Files.readAllBytes(Paths.get(imgFile));\n            return new String(Base64.encodeBase64(data));\n        } else {\n"
+                  }
+                }
+              },
+              "message" : {
+                "text" : "imgFile"
+              }
+            }
+          } ]
+        } ]
+      } ],
+      "relatedLocations" : [ {
+        "id" : 1,
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "src/main/java/org/joychou/controller/PathTraversal.java",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 1
+          },
+          "region" : {
+            "startLine" : 25,
+            "startColumn" : 28,
+            "endColumn" : 43
+          },
+          "contextRegion" : {
+            "startLine" : 23,
+            "endLine" : 27,
+            "snippet" : {
+              "text" : "     */\n    @GetMapping(\"/path_traversal/vul\")\n    public String getImage(String filepath) throws IOException {\n        return getImgBase64(filepath);\n    }\n"
+            }
+          }
+        },
+        "message" : {
+          "text" : "User-provided value"
+        }
+      }, {
+        "id" : 2,
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "src/main/java/org/joychou/controller/PathTraversal.java",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 1
+          },
+          "region" : {
+            "startLine" : 30,
+            "startColumn" : 31,
+            "endColumn" : 46
+          },
+          "contextRegion" : {
+            "startLine" : 28,
+            "endLine" : 32,
+            "snippet" : {
+              "text" : "\n    @GetMapping(\"/path_traversal/sec\")\n    public String getImageSec(String filepath) throws IOException {\n        if (SecurityUtil.pathFilter(filepath) == null) {\n            logger.info(\"Illegal file path: \" + filepath);\n"
+            }
+          }
+        },
+        "message" : {
+          "text" : "User-provided value"
+        }
+      } ]
+    }, {
+      "ruleId" : "java/path-injection",
+      "ruleIndex" : 0,
+      "message" : {
+        "text" : "[User-provided value](1) flows to here and is used in a path."
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "src/main/java/org/joychou/util/WebUtils.java",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 2
+          },
+          "region" : {
+            "startLine" : 40,
+            "startColumn" : 28,
+            "endColumn" : 46
+          },
+          "contextRegion" : {
+            "startLine" : 38,
+            "endLine" : 42,
+            "snippet" : {
+              "text" : "    public static String getFileExtension(String fullName) {\n        Preconditions.checkNotNull(fullName);\n        String fileName = (new File(fullName)).getName();\n        int dotIndex = fileName.lastIndexOf('.');\n        return dotIndex == -1 ? \"\" : fileName.substring(dotIndex + 1);\n"
+            }
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "82ecadb4901a0993:1",
+        "primaryLocationStartColumnFingerprint" : "19"
+      },
+      "codeFlows" : [ {
+        "threadFlows" : [ {
+          "locations" : [ {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/main/java/org/joychou/controller/SSRF.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 3
+                },
+                "region" : {
+                  "startLine" : 104,
+                  "startColumn" : 28,
+                  "endColumn" : 52
+                },
+                "contextRegion" : {
+                  "startLine" : 102,
+                  "endLine" : 106,
+                  "snippet" : {
+                    "text" : "     */\n    @GetMapping(\"/openStream\")\n    public void openStream(@RequestParam String url, HttpServletResponse response) throws IOException {\n        InputStream inputStream = null;\n        OutputStream outputStream = null;\n"
+                  }
+                }
+              },
+              "message" : {
+                "text" : "url : String"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/main/java/org/joychou/controller/SSRF.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 3
+                },
+                "region" : {
+                  "startLine" : 108,
+                  "startColumn" : 114,
+                  "endColumn" : 117
+                },
+                "contextRegion" : {
+                  "startLine" : 106,
+                  "endLine" : 110,
+                  "snippet" : {
+                    "text" : "        OutputStream outputStream = null;\n        try {\n            String downLoadImgFileName = WebUtils.getNameWithoutExtension(url) + \".\" + WebUtils.getFileExtension(url);\n            // download\n            response.setHeader(\"content-disposition\", \"attachment;fileName=\" + downLoadImgFileName);\n"
+                  }
+                }
+              },
+              "message" : {
+                "text" : "url : String"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/main/java/org/joychou/util/WebUtils.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 2
+                },
+                "region" : {
+                  "startLine" : 38,
+                  "startColumn" : 43,
+                  "endColumn" : 58
+                },
+                "contextRegion" : {
+                  "startLine" : 36,
+                  "endLine" : 40,
+                  "snippet" : {
+                    "text" : "\n\n    public static String getFileExtension(String fullName) {\n        Preconditions.checkNotNull(fullName);\n        String fileName = (new File(fullName)).getName();\n"
+                  }
+                }
+              },
+              "message" : {
+                "text" : "fullName : String"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/main/java/org/joychou/util/WebUtils.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 2
+                },
+                "region" : {
+                  "startLine" : 40,
+                  "startColumn" : 37,
+                  "endColumn" : 45
+                },
+                "contextRegion" : {
+                  "startLine" : 38,
+                  "endLine" : 42,
+                  "snippet" : {
+                    "text" : "    public static String getFileExtension(String fullName) {\n        Preconditions.checkNotNull(fullName);\n        String fileName = (new File(fullName)).getName();\n        int dotIndex = fileName.lastIndexOf('.');\n        return dotIndex == -1 ? \"\" : fileName.substring(dotIndex + 1);\n"
+                  }
+                }
+              },
+              "message" : {
+                "text" : "fullName"
+              }
+            }
+          } ]
+        } ]
+      } ],
+      "relatedLocations" : [ {
+        "id" : 1,
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "src/main/java/org/joychou/controller/SSRF.java",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 3
+          },
+          "region" : {
+            "startLine" : 104,
+            "startColumn" : 28,
+            "endColumn" : 52
+          },
+          "contextRegion" : {
+            "startLine" : 102,
+            "endLine" : 106,
+            "snippet" : {
+              "text" : "     */\n    @GetMapping(\"/openStream\")\n    public void openStream(@RequestParam String url, HttpServletResponse response) throws IOException {\n        InputStream inputStream = null;\n        OutputStream outputStream = null;\n"
+            }
+          }
+        },
+        "message" : {
+          "text" : "User-provided value"
+        }
+      } ]
+    }, {
+      "ruleId" : "java/path-injection",
+      "ruleIndex" : 0,
+      "message" : {
+        "text" : "[User-provided value](1) flows to here and is used in a path."
+      },
+      "locations" : [ {
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "src/main/java/org/joychou/util/WebUtils.java",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 2
+          },
+          "region" : {
+            "startLine" : 48,
+            "startColumn" : 28,
+            "endColumn" : 42
+          },
+          "contextRegion" : {
+            "startLine" : 46,
+            "endLine" : 50,
+            "snippet" : {
+              "text" : "    public static String getNameWithoutExtension(String file) {\n        Preconditions.checkNotNull(file);\n        String fileName = (new File(file)).getName();\n        int dotIndex = fileName.lastIndexOf('.');\n        return dotIndex == -1 ? fileName : fileName.substring(0, dotIndex);\n"
+            }
+          }
+        }
+      } ],
+      "partialFingerprints" : {
+        "primaryLocationLineHash" : "87a93fa1f32a943d:1",
+        "primaryLocationStartColumnFingerprint" : "19"
+      },
+      "codeFlows" : [ {
+        "threadFlows" : [ {
+          "locations" : [ {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/main/java/org/joychou/controller/SSRF.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 3
+                },
+                "region" : {
+                  "startLine" : 104,
+                  "startColumn" : 28,
+                  "endColumn" : 52
+                },
+                "contextRegion" : {
+                  "startLine" : 102,
+                  "endLine" : 106,
+                  "snippet" : {
+                    "text" : "     */\n    @GetMapping(\"/openStream\")\n    public void openStream(@RequestParam String url, HttpServletResponse response) throws IOException {\n        InputStream inputStream = null;\n        OutputStream outputStream = null;\n"
+                  }
+                }
+              },
+              "message" : {
+                "text" : "url : String"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/main/java/org/joychou/controller/SSRF.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 3
+                },
+                "region" : {
+                  "startLine" : 108,
+                  "startColumn" : 75,
+                  "endColumn" : 78
+                },
+                "contextRegion" : {
+                  "startLine" : 106,
+                  "endLine" : 110,
+                  "snippet" : {
+                    "text" : "        OutputStream outputStream = null;\n        try {\n            String downLoadImgFileName = WebUtils.getNameWithoutExtension(url) + \".\" + WebUtils.getFileExtension(url);\n            // download\n            response.setHeader(\"content-disposition\", \"attachment;fileName=\" + downLoadImgFileName);\n"
+                  }
+                }
+              },
+              "message" : {
+                "text" : "url : String"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/main/java/org/joychou/util/WebUtils.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 2
+                },
+                "region" : {
+                  "startLine" : 46,
+                  "startColumn" : 50,
+                  "endColumn" : 61
+                },
+                "contextRegion" : {
+                  "startLine" : 44,
+                  "endLine" : 48,
+                  "snippet" : {
+                    "text" : "\n\n    public static String getNameWithoutExtension(String file) {\n        Preconditions.checkNotNull(file);\n        String fileName = (new File(file)).getName();\n"
+                  }
+                }
+              },
+              "message" : {
+                "text" : "file : String"
+              }
+            }
+          }, {
+            "location" : {
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "uri" : "src/main/java/org/joychou/util/WebUtils.java",
+                  "uriBaseId" : "%SRCROOT%",
+                  "index" : 2
+                },
+                "region" : {
+                  "startLine" : 48,
+                  "startColumn" : 37,
+                  "endColumn" : 41
+                },
+                "contextRegion" : {
+                  "startLine" : 46,
+                  "endLine" : 50,
+                  "snippet" : {
+                    "text" : "    public static String getNameWithoutExtension(String file) {\n        Preconditions.checkNotNull(file);\n        String fileName = (new File(file)).getName();\n        int dotIndex = fileName.lastIndexOf('.');\n        return dotIndex == -1 ? fileName : fileName.substring(0, dotIndex);\n"
+                  }
+                }
+              },
+              "message" : {
+                "text" : "file"
+              }
+            }
+          } ]
+        } ]
+      } ],
+      "relatedLocations" : [ {
+        "id" : 1,
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "uri" : "src/main/java/org/joychou/controller/SSRF.java",
+            "uriBaseId" : "%SRCROOT%",
+            "index" : 3
+          },
+          "region" : {
+            "startLine" : 104,
+            "startColumn" : 28,
+            "endColumn" : 52
+          },
+          "contextRegion" : {
+            "startLine" : 102,
+            "endLine" : 106,
+            "snippet" : {
+              "text" : "     */\n    @GetMapping(\"/openStream\")\n    public void openStream(@RequestParam String url, HttpServletResponse response) throws IOException {\n        InputStream inputStream = null;\n        OutputStream outputStream = null;\n"
+            }
+          }
+        },
+        "message" : {
+          "text" : "User-provided value"
+        }
+      } ]
+    } ],
+    "columnKind" : "utf16CodeUnits",
+    "properties" : {
+      "semmle.formatSpecifier" : "sarif-latest"
+    }
+  } ]
+}

@@ -1,0 +1,15 @@
+[2020-09-04 09:39:36] This is codeql database analyze --format=sarif-latest --output=./res.json --sarif-add-snippets --threads=4 ./codeql_db /Users/mtfly/Code/CodeQL/origin_ql/java/ql/src/Security/CWE/CWE-022/TaintedPath.ql
+[2020-09-04 09:39:36] Log file was started late.
+[2020-09-04 09:39:36] [PROGRESS] database analyze> Running queries.
+[2020-09-04 09:39:36] Running plumbing command: codeql database run-queries --threads=4 --ml-model-path= --native-library-path= --warnings=show --no-rerun -- /Users/mtfly/Code/Java/test4codeql/codeql_db /Users/mtfly/Code/CodeQL/origin_ql/java/ql/src/Security/CWE/CWE-022/TaintedPath.ql
+[2020-09-04 09:39:36] Calling plumbing command: codeql resolve ram --format=json
+[2020-09-04 09:39:36] Plumbing command codeql resolve ram completed:
+                      [
+                        "-J-Xmx1024M",
+                        "--off-heap-ram=1024"
+                      ]
+[2020-09-04 09:39:36] Spawning plumbing command: execute queries -J-Xmx1024M --off-heap-ram=1024 --verbosity=progress --logdir=/Users/mtfly/Code/Java/test4codeql/codeql_db/log --threads=4 --ml-model-path=/Users/mtfly/Code/Java/test4codeql --native-library-path=/Users/mtfly/Code/Java/test4codeql --warnings=show --no-rerun --output=/Users/mtfly/Code/Java/test4codeql/codeql_db/results -- /Users/mtfly/Code/Java/test4codeql/codeql_db/db-java /Users/mtfly/Code/CodeQL/origin_ql/java/ql/src/Security/CWE/CWE-022/TaintedPath.ql
+[2020-09-04 09:39:37] [ERROR] Spawned process exited abnormally (code 2; tried to run: [/Users/mtfly/Code/CodeQL/codeql/tools/osx64/java/bin/java, -Xmx1024M, -Djava.library.path=/Users/mtfly/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:., -cp, /Users/mtfly/Code/CodeQL/codeql/tools/codeql.jar, com.semmle.cli2.CodeQL, execute, queries, -J-Xmx1024M, --off-heap-ram=1024, --verbosity=progress, --logdir=/Users/mtfly/Code/Java/test4codeql/codeql_db/log, --threads=4, --ml-model-path=/Users/mtfly/Code/Java/test4codeql, --native-library-path=/Users/mtfly/Code/Java/test4codeql, --warnings=show, --no-rerun, --output=/Users/mtfly/Code/Java/test4codeql/codeql_db/results, --, /Users/mtfly/Code/Java/test4codeql/codeql_db/db-java, /Users/mtfly/Code/CodeQL/origin_ql/java/ql/src/Security/CWE/CWE-022/TaintedPath.ql])
+[2020-09-04 09:39:37] Plumbing command codeql execute queries terminated with status 2.
+[2020-09-04 09:39:37] Plumbing command codeql database run-queries completed with status 2.
+[2020-09-04 09:39:37] Exiting with code 2
