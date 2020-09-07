@@ -23,7 +23,8 @@ public class PathTraversal {
      */
     @GetMapping("/path_traversal/vul")
     public String getImage(String filepath) throws IOException {
-        return getImgBase64(filepath);
+        int tmp = filepath.lastIndexOf("/");
+        return getImgBase64(filepath.substring(tmp, filepath.length()));
     }
 
     @GetMapping("/path_traversal/sec")
